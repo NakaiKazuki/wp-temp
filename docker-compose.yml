@@ -2,17 +2,15 @@ version: "3.8"
 services:
   db:
     image: mysql:8.0.22
-    volumes:
-      - db_data:/var/lib/mysql
     env_file:
       - ./env/db.env
-      - ./env/wp.env
+    volumes:
+      - db-data:/var/lib/mysql
     ports:
       - 3306:3306
     command: --default-authentication-plugin=mysql_native_password
 
   wordpress:
-    # カスタムDockerfileを指定
     build:
       context: .
     ports:
@@ -26,4 +24,4 @@ services:
       - db
 
 volumes:
-  db_data:
+  db-data:
