@@ -17,8 +17,8 @@ services:
       context: .
     ports:
       - "8000:80"
-    # volumes:
-    #   - .:/wordpress
+    volumes:
+      - .:/wordpress
     env_file:
       - ./env/wp.env
     tty: true
